@@ -2,7 +2,17 @@
   "name": "hostfully-cypress",
   "version": "1.0.0",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "npm install",
+    "test": "cypress run",
+    "lint-code": "eslint --fix \"{cypress,features,steps}/**/*.ts\"",
+    "lint-dependencies": "dependency-lint",
+    "lint-format-autofix": "prettier --write .",
+    "lint-format": "prettier --check .",
+    "lint": "npm run lint-code && npm run lint-format && npm run lint-dependencies",
+    "pretest": "npm run clean-reports",
+    "postest": "npm run merge-reports && npm run generate-report",
+    "cypress-open": "cypress open"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",

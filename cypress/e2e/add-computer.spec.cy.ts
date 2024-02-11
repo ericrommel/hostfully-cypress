@@ -1,12 +1,13 @@
-import { faker } from '@faker-js/faker'
+
 import { DateTime } from 'luxon'
 import NewComputerPage from '../support/pages/computer-new.page'
 import ListComputerPage from '../support/pages/computer-list.page'
+import { setRandomString } from '../support/utils/utils'
 
 describe('Scenario 1: Add a new computer successfully', () => {
   it('TC001: Verify Successful Addition of a Computer', () => {
     // .Arrange
-    const computerName = `${faker.word.sample()}-${faker.word.sample()}`
+    const computerName = setRandomString()
     const now = DateTime.now()
     const introducedDate = now.toFormat('yyyy-MM-dd')
     const discontinuedDate = now.plus({ years: 2 }).toFormat('yyyy-MM-dd')

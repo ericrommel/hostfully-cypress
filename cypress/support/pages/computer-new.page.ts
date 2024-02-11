@@ -1,4 +1,5 @@
 import * as _ from 'lodash'
+import { setRandomString } from '../utils/utils'
 
 
 export default class NewComputerPage {
@@ -42,8 +43,22 @@ export default class NewComputerPage {
     this.checkPageLoaded()
   }
 
-  setNewComputerName(text?: string): void {
-    cy.get(this.computerNameInput).type(text).should('have.value', text)
+  setNewComputerName(text?: string, numberOfWords: number = 2): void {
+    text = text ? text : setRandomString(numberOfWords)
+    
+    // By default, Cypress has a delay for typing. This can cause a false-positive result
+    if (numberOfWords > 2) {
+      cy.get(this.computerNameInput)
+        .should('be.visible')
+        .invoke('val', text)
+        .invoke('val')
+        .should('have.length', text.length)
+    } else {
+      cy.get(this.computerNameInput)
+        .should('be.visible')
+        .type(text)
+        .should('have.value', text)
+    }
   }
 
   setIntroducedDate(text: string): void {
