@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The project involves writing automated tests for the demo application available at https://computer-database.gatling.io/computers.
+The project involves writing automated tests for the demo application available at <https://computer-database.gatling.io/computers>.
 The primary focus is on testing the functionality of adding a new computer to the database. The tests will be written using
 Cypress and JavaScript, with preference given to TypeScript. The exercise is expected to be completed within a duration of 3 to 5 hours.
 
@@ -14,7 +14,7 @@ Cypress and JavaScript, with preference given to TypeScript. The exercise is exp
 
 ## Test Scope
 
-The test scope includes automated testing of the "Add a new computer" functionality. The tests should encompass both 
+The test scope includes automated testing of the "Add a new computer" functionality. The tests should encompass both
 positive and negative scenarios, covering various input combinations and error conditions.
 
 ## Testing Approach
