@@ -61,3 +61,19 @@ Check out the the documents below to learn more about the tests:
   3. [Test Case: Verify Error Message for Invalid Introduced Date](docs/test-cases/T003.md)
   4. [Test Case: Verify Handling of Discontinued Date Before Introduced Date](docs/test-cases/T004.md)
   5. [Test Case: Verify Maximum Character Limit for Name Field](docs/test-cases/T005.md)
+
+### Summary of findings
+
+Findings are in this section.
+
+### ISSUE-001: Additional space in the alert message
+
+- **Description:** Alert message contains an additional space when adding a new computer after the sign `!`
+- **Severity:** Minor
+- **Steps to Reproduce:**
+  1. Add a new computer with an unique name
+  2. From the list of computers page, the alert message shows the message: `Done ! Computer <NAME> has been created`
+- **Actual Result:** Cypress testing is failing as the message returned was `Done !  Computer fully-fabulous has been created`. Note the additional space between `!` and `Computer`.
+- **Expected Result:** Cypress testing should not detect an additional space
+- **Evidences:** See here: [Additional Space](docs/evidences/AdditionalSpace.png).
+- **Workaround:** Added an additional space inside the test check
