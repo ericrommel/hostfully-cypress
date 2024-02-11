@@ -9,9 +9,7 @@ describe('Scenario 1: Add a new computer successfully', () => {
     const computerName = `${faker.word.sample()}-${faker.word.sample()}`
     const now = DateTime.now()
     const introducedDate = now.toFormat('yyyy-MM-dd')
-    cy.log(`introducedDate: `, introducedDate)
     const discontinuedDate = now.plus({ years: 2 }).toFormat('yyyy-MM-dd')
-    cy.log(`discontinuedDate: `, discontinuedDate)
     const newComputerPage = new NewComputerPage()
     const listComputersPage = new ListComputerPage()
 
