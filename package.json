@@ -1,7 +1,38 @@
 {
+  "name": "hostfully-cypress",
+  "version": "1.0.0",
+  "scripts": {
+    "prepare": "husky",
+    "build": "npm install",
+    "test": "cypress run",
+    "lint-code": "eslint --fix \"{cypress,features,steps}/**/*.ts\"",
+    "lint-dependencies": "dependency-lint",
+    "lint-format-autofix": "prettier --write .",
+    "lint-format": "prettier --check .",
+    "lint": "npm run lint-code && npm run lint-format && npm run lint-dependencies",
+    "pretest": "npm run clean-reports",
+    "postest": "npm run merge-reports && npm run generate-report",
+    "cypress-open": "cypress open"
+  },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/lodash": "^4.14.202",
+    "@types/luxon": "^3.4.2",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "cypress": "^13.6.4",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-unicorn": "^51.0.1",
     "husky": "^9.0.10",
-    "lint-staged": "^15.2.2"
+    "lint-staged": "^15.2.2",
+    "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "https://computer-database.gatling.io",
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"]
+  },
+  "include": ["**/*.ts"],
+  "strictNullChecks": true,
+  "allowSyntheticDefaultImports": true
+}
