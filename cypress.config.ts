@@ -3,7 +3,7 @@ import { defineConfig } from "cypress";
 export default defineConfig({
   e2e: {
     baseUrl: 'https://computer-database.gatling.io',
-    setupNodeEvents(on, config) {
+    setupNodeEvents() {
       // implement node event listeners here
     },
   },
@@ -12,4 +12,8 @@ export default defineConfig({
   screenshotOnRunFailure: true,
   screenshotsFolder: "cypress/report/evidences/screenshots",
   trashAssetsBeforeRuns: true,
+  reporter: 'cypress-multi-reporters',
+  reporterOptions: {
+    "configFile": "reporter-config.json"
+  },
 });

@@ -1,0 +1,36 @@
+name: Cypress Tests
+
+on:
+  push:
+  # Test runs weekly at 00:00 on Mondays
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE,
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Simple way to run Cypress with the built-in Electron browser.
+      # It takes the project's lock file, installs dependencies and caches them
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+
+      # After the test run completes store videos and any screenshots
+      - name: Save screenshot files
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/report/evidences/screenshots
+          if-no-files-found: warn
+      - name: Save video files
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/report/evidences/videos
+          if-no-files-found: warn
