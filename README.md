@@ -23,14 +23,10 @@ Typically, this technical assessment spans a duration of 3 to 5 hours.
 ### How to Deliver Your Solution
 
 - [X] Upload your solution to a GitHub repository.
-- [X] Use descriptive commit messages and, preferably, create multiple commits to
-provide a clear history of your work.
-- [X] Include a README file in your repository with clear instructions on how to run
-the tests.
-- [ ] **[OPTIONAL]:** Provide a summary of your findings, including any
-issues you encountered and how you resolved them.
-- [ ] **[OPTIONAL]:** Include a brief explanation of how you approached the task and
-why you made certain decisions.
+- [X] Use descriptive commit messages and, preferably, create multiple commits to provide a clear history of your work.
+- [X] Include a README file in your repository with clear instructions on how to run the tests.
+- [X] **[OPTIONAL]:** Provide a summary of your findings, including any issues you encountered and how you resolved them.
+- [X] **[OPTIONAL]:** Include a brief explanation of how you approached the task and why you made certain decisions.
 
 ## Description of the Solution
 
@@ -40,8 +36,7 @@ The solution was designed in the simplest way to avoid spending more than 5 hour
 
 Install and set configuration if needed for:
 
-- Node.js (v20.10.0)
-- npm (10.2.3)
+- [Node.js](https://nodejs.org/en/download/) (version used: v20.10.0)
 
 #### Install dependencies
 
@@ -49,7 +44,44 @@ Install and set configuration if needed for:
   npm install
   ```
 
+### Manual execution
+
+- Run the tests:
+  
+  ```batch
+  npm run test
+  ```
+
+#### Report
+
+After the test execution, reports are saved locally at [cypress/report/mochareports/report.html](cypress/report/mochareports/report.html):
+
+### CI/CD
+
+This project uses GitHub Actions as a sample CI in [GitHub](https://github.com/ericrommel/hostfully-cypress/actions/workflows/main.yml)
+
 ### Deliverables
+
+#### Approach used
+
+##### TL;DR
+
+- Developed 6 test cases for the add computer functionality, spanning 2 scenarios
+- Discovered 5 issues during testing, documented in [here](docs/issues.md)
+- Utilized the Page Object Model (POM) to organize locators and functions, enhancing code reusability and maintainability
+- Two issues caused test failures, prompting the skipping of failing tests until resolution
+- Implemented workarounds for the remaining issues
+- Test strategy, test plan, and test cases documents were created for reference and documentation purposes.
+
+##### Explanation
+
+The task required the creation of test scenarios for the add computer functionality, resulting in the development of 6 test cases covering 2 distinct scenarios. During testing, 5 issues were identified and documented in the provided issue log. To structure the automation code effectively, the Page Object Model (POM) was employed, enabling the systematic organization of locators and functions into reusable components associated with specific pages, such as the List computers page and Add computers page. This approach promotes code reusability and facilitates maintenance.
+
+Two of the identified issues led to test failures, necessitating the temporary skipping of affected tests until the underlying problems are resolved. For the remaining issues, temporary workarounds were implemented to ensure test continuity. Once the identified issues are addressed and resolved, the affected tests can be revisited and rectified accordingly.
+
+Additionally, as part of the testing process, comprehensive test strategy, test plan, and test cases documents were crafted to provide guidance and reference for the testing efforts. These documents serve as valuable resources for understanding the testing approach, outlining test scenarios, and documenting test cases for future use and collaboration.
+
+#### Documents
 
 Check out the the documents below to learn more about the tests:
 
