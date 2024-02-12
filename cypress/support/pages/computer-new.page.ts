@@ -1,7 +1,6 @@
 import * as _ from 'lodash'
 import { setRandomString } from '../utils/utils'
 
-
 export default class NewComputerPage {
   private readonly _url = '/computers/new'
 
@@ -62,11 +61,17 @@ export default class NewComputerPage {
   }
 
   setIntroducedDate(text: string): void {
-    cy.get(this.introducedInput).type(text).should('have.value', text)
+    cy.get(this.introducedInput)
+      .should('be.visible')
+      .type(text)
+      .should('have.value', text)
   }
 
   setDiscontinuedDate(text: string): void {
-    cy.get(this.discontinuedInput).type(text).should('have.value', text)
+    cy.get(this.discontinuedInput)
+      .should('be.visible')
+      .type(text)
+      .should('have.value', text)
   }
 
   selectCompanyName(): void {
@@ -75,9 +80,10 @@ export default class NewComputerPage {
   }
 
   private getCreateButton(): Cypress.Chainable<JQuery<HTMLElement>> {
-    const createBtn = cy.get(this.createThisComputerButton)
-    createBtn.should('be.visible').should('have.value', 'Create this computer')
-    return createBtn
+    return cy
+      .get(this.createThisComputerButton)
+      .should('be.visible')
+      .should('have.value', 'Create this computer')
   }
 
   createANewComputer() {
@@ -85,9 +91,10 @@ export default class NewComputerPage {
   }
 
   private getCancelButton(): Cypress.Chainable<JQuery<HTMLElement>> {
-    const cancelBtn = cy.get(this.cancelButton)
-    cancelBtn.should('be.visible').should('have.text', 'Cancel')
-    return cancelBtn
+    return cy
+      .get(this.cancelButton)
+      .should('be.visible')
+      .should('have.text', 'Cancel')
   }
 
   cancelAddNewComputer() {

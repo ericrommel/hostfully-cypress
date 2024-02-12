@@ -1,95 +1,70 @@
-import { DateTime } from 'luxon'
 import NewComputerPage from '../support/pages/computer-new.page'
-import { setRandomString } from '../support/utils/utils'
+import { testData } from '../support/utils/test-data'
 
 describe('Scenario 2: Error handling for adding a new computer', () => {
-  // .Messages
-  const errorComputerNameMsg = 'Failed to refine type'
-  const errorIntroducedDataInvalidMsg = 'Failed to decode date'
-  const errorDiscontinuedDateBeforeIntroducedDateMsg =
-    'Discontinued date is before introduction date'
-  // const errorMaximumCharacterLimitExceededMsg = 'Maximum character limit exceeded. Limit is 50 characters.'
-
-  // Testing data
-  const now = DateTime.now()
-  const computerName = setRandomString()
-  const introducedDateValid = now.toFormat('yyyy-MM-dd')
-  const introducedDateInvalid = now.toFormat('dd-MM-yyyy')
-  const discontinuedDateValid = now.plus({ year: 1 }).toFormat('yyyy-MM-dd')
-  const discontinuedDateBeforeIndroducedDate = now
-    .minus({ day: 1 })
-    .toFormat('yyyy-MM-dd')
   const newComputerPage = new NewComputerPage()
 
-  it('TC002: Verify Error Message for Missing Name Field', () => {
-    // .Act: Navigate to the "Add a computer" page
+  beforeEach(() => {
     newComputerPage.load()
-
-    // .Act: Leave the computer name field empty and fill in valid details for other fields
-    newComputerPage.setIntroducedDate(introducedDateValid)
-    newComputerPage.setDiscontinuedDate(discontinuedDateValid)
-    newComputerPage.selectCompanyName()
-
-    // .Act: Click on the "Create this computer" button
-    newComputerPage.createANewComputer()
-
-    // .Assert: Verify that the computer is successfully added to the database.
-    newComputerPage.checkAlertError(errorComputerNameMsg) // ToDo: ISSUE-002
   })
 
-  it('TC003: Verify Error Message for Invalid Introduced Date', () => {
-    // .Act: Navigate to the "Add a computer" page
-    newComputerPage.load()
-
-    // .Act: Enter valid details for computer name, select a company, and enter an invalid format for the introduced date.
-    newComputerPage.setNewComputerName(computerName)
-    newComputerPage.setIntroducedDate(introducedDateInvalid)
-    newComputerPage.setDiscontinuedDate(discontinuedDateValid)
+  it('TC003: Verify Error Message for Missing Name Field', () => {
+    // .Arrange
+    // .Act
+    newComputerPage.setIntroducedDate(testData.introducedDate)
+    newComputerPage.setDiscontinuedDate(testData.discontinuedDate)
     newComputerPage.selectCompanyName()
-
-    // .Act: Click on the "Create this computer" button
     newComputerPage.createANewComputer()
 
-    // .Assert: Verify that the computer is successfully added to the database.
-    newComputerPage.checkAlertError(errorIntroducedDataInvalidMsg) // ToDo: ISSUE-003
+    // .Assert
+    newComputerPage.checkAlertError(testData.errorMessages.errorComputerNameMsg)
   })
 
-  it('TC004: Verify Handling of Discontinued Date Before Introduced Date', () => {
-    // .Act: Navigate to the "Add a computer" page
-    newComputerPage.load()
-
-    // .Act: Enter valid details for name, introduced date, discontinued date (before introduced date), and select a company.
-    newComputerPage.setNewComputerName(computerName)
-    newComputerPage.setIntroducedDate(introducedDateValid)
-    newComputerPage.setDiscontinuedDate(discontinuedDateBeforeIndroducedDate)
+  it('TC004: Verify Error Message for Invalid Introduced Date', () => {
+    // .Arrange
+    // .Act
+    newComputerPage.setNewComputerName(testData.computerName)
+    newComputerPage.setIntroducedDate(testData.now.toFormat('dd-MM-yyyy'))
+    newComputerPage.setDiscontinuedDate(testData.discontinuedDate)
     newComputerPage.selectCompanyName()
-
-    // .Act: Click on the "Create this computer" button
     newComputerPage.createANewComputer()
 
-    // .Assert: Verify that the computer is successfully added to the database.
+    // .Assert;
     newComputerPage.checkAlertError(
-      errorDiscontinuedDateBeforeIntroducedDateMsg
+      testData.errorMessages.errorIntroducedDataInvalidMsg
     )
   })
 
-  // ToDo: ISSUE-004
-  it.skip('TC005: Verify Maximum Character Limit for Name Field', () => {
-    // .Act: Navigate to the "Add a computer" page
-    newComputerPage.load()
-
-    // .Act: Enter a name that exceeds the maximum character limit.
-    newComputerPage.setNewComputerName(null, 300)
-
-    // .Act: Fill in valid details for other fields.
-    newComputerPage.setIntroducedDate(introducedDateValid)
-    newComputerPage.setDiscontinuedDate(discontinuedDateValid)
+  it('TC005: Verify Handling of Discontinued Date Before Introduced Date', () => {
+    // .Arrange
+    // .Act
+    newComputerPage.setNewComputerName(testData.computerName)
+    newComputerPage.setIntroducedDate(testData.introducedDate)
+    newComputerPage.setDiscontinuedDate(
+      testData.discontinuedBeforeIndroducedDate
+    )
     newComputerPage.selectCompanyName()
-
-    // .Act: Click on the "Create this computer" button
     newComputerPage.createANewComputer()
 
-    // .Assert: An error message should be displayed indicating that the name field exceeds the maximum character limit.
-    // newComputerPage.checkAlertError(errorMaximumCharacterLimitExceededMsg)
+    // .Assert
+    newComputerPage.checkAlertError(
+      testData.errorMessages.errorDiscontinuedDateBeforeIntroducedDateMsg
+    )
+  })
+
+  // ToDo: ISSUE-004. Test case skipped until the functionality is implemented/fixed
+  it.skip('TC006: Verify Maximum Character Limit for Name Field', () => {
+    // .Arrange
+    // .Act
+    newComputerPage.setNewComputerName(null, 300) // Exceeds maximum character limit
+    newComputerPage.setIntroducedDate(testData.introducedDate)
+    newComputerPage.setDiscontinuedDate(testData.discontinuedDate)
+    newComputerPage.selectCompanyName()
+    newComputerPage.createANewComputer()
+
+    // .Assert
+    newComputerPage.checkAlertError(
+      testData.errorMessages.errorMaximumCharacterLimitExceededMsg
+    )
   })
 })

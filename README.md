@@ -56,11 +56,12 @@ Check out the the documents below to learn more about the tests:
 - [Test Strategy document](docs/test-strategy.md)
 - [Test Plan document](docs/test-plan.md)
 - Test Case documents:
-  1. [Test Case: Verify Successful Addition of a Computer](docs/est-cases/T001.md)
-  2. [Test Case: Verify Error Message for Missing Name Field](docs/test-cases/T002.md)
-  3. [Test Case: Verify Error Message for Invalid Introduced Date](docs/test-cases/T003.md)
-  4. [Test Case: Verify Handling of Discontinued Date Before Introduced Date](docs/test-cases/T004.md)
-  5. [Test Case: Verify Maximum Character Limit for Name Field](docs/test-cases/T005.md)
+  1. [Test Case: Verify Alert Message for Successful Addition](docs/est-cases/T001.md)
+  2. [Test Case: Verify that the new computer is saved in the database and reflected in the list of computers.](docs/test-cases/T002.md)
+  3. [Test Case: Verify Error Message for Missing Name Field](docs/test-cases/T003.md)
+  4. [Test Case: Verify Error Message for Invalid Introduced Date](docs/test-cases/T004.md)
+  5. [Test Case: Verify Handling of Discontinued Date Before Introduced Date](docs/test-cases/T005.md)
+  6. [Test Case: Verify Maximum Character Limit for Name Field](docs/test-cases/T006.md)
 
 ### Summary of findings
 

@@ -15,12 +15,12 @@ Cypress and JavaScript, with preference given to TypeScript. The exercise is exp
 ## Test Scope
 
 The test scope includes automated testing of the "Add a new computer" functionality. The tests should encompass both
-positive and negative scenarios, covering various input combinations and error conditions.
+positive and negative scenarios, covering various input combinations, alert messages, error conditions and database persistence checks.
 
 ## Testing Approach
 
 1. **Scenario Identification:** Identify at least two scenarios for automation based on the functionality requirements.
-2. **Test Case Design:** Design test cases to cover basic and edge cases for each scenario.
+2. **Test Case Design:** Design test cases to cover basic and edge cases for each scenario, including alert message verification and database persistence checks.
 3. **Test Script Development:** Develop test scripts using Cypress and JavaScript, with a preference for TypeScript.
 4. **Execution and Validation:** Execute the tests and validate the functionality against expected outcomes.
 5. **Reporting and Documentation:** Document test results, findings, and any issues encountered during the testing process.

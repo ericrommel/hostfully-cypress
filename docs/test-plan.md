@@ -7,7 +7,8 @@
 Add a new computer successfully:
 
 - Verify that a new computer can be added with valid input data.
-- Validate that the newly added computer appears in the database.
+- Validate that the alert message confirming the addition is displayed.
+- Check if the computer is saved in the database.
 
 ### Scenario 2
 
