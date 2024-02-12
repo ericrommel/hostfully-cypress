@@ -54,7 +54,7 @@ Install and set configuration if needed for:
 
 #### Report
 
-After the test execution, reports are saved locally at [cypress/report/mochareports/report.html](cypress/report/mochareports/report.html):
+After a test execution, reports are saved locally at [cypress/report/mochareports/report.html](cypress/report/mochareports/report.html):
 
 ### CI/CD
 
